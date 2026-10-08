@@ -1,0 +1,46 @@
+/* Hallmark · tokens · hoplanet.codehappens.dev · route: custom (bespoke), colours taken from the game
+ * axes: paper dark / display-heavy wide / accent cool (cyan 205) + pink 355
+ */
+:root {
+  color-scheme: dark;
+  --color-paper:   oklch(14% 0.05 290);
+  --color-paper-2: oklch(19% 0.07 295);
+  --color-rule:    oklch(32% 0.07 290);
+  --color-ink:     oklch(97% 0.01 290);
+  --color-muted:   oklch(78% 0.04 290);
+  --color-star:    oklch(86% 0.03 290);
+  --color-cyan:    oklch(85% 0.14 205);
+  --color-cyan-hi: oklch(93% 0.08 205);
+  --color-pink:    oklch(65% 0.25 355);
+  --color-pink-hi: oklch(78% 0.16 355);
+  --color-amber:   oklch(74% 0.12 80);
+  --color-gold:    oklch(87% 0.15 88);
+  --color-clear:   oklch(14% 0.05 290 / 0);
+
+  --font-display: "Unbounded", "Arial Black", "Segoe UI Black", sans-serif;
+  --font-body:    "Figtree", ui-sans-serif, "Segoe UI", Roboto, sans-serif;
+
+  --text-sm:      0.875rem;
+  --text-base:    1.0625rem;
+  --text-md:      1.25rem;
+  --text-lg:      clamp(1.5rem, 2.2vw + 1rem, 2.25rem);
+  --text-display: clamp(2.5rem, 10.5vw, 5rem);
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6.5rem;
+
+  --page-gutter: clamp(1rem, 4vw, 2.5rem);
+  --page-max:    68rem;
+  --read-max:    44rem;
+
+  --radius-shot: 1.1rem;
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-micro: 120ms;
+  --dur-long:  520ms;
+  --loop:      8s;
+}

@@ -1,35 +1,155 @@
-/* hoplanet.codehappens.dev — bez fontów i skryptów z zewnątrz (CSP default-src 'self'). */
-:root {
-  --color-paper:  oklch(17% 0.045 290);
-  --color-rule:   oklch(32% 0.05 290);
-  --color-ink:    oklch(95% 0.01 290);
-  --color-muted:  oklch(76% 0.03 290);
-  --color-accent: oklch(82% 0.14 200);
-  --font-body: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
-  --read-max: 44rem;
+/* Hallmark · route: custom (bespoke) · structure: orbit-loop hero, steps beside one screenshot, screenshot strip, plain feature list · idea: "the game's own loop plays behind the title"
+ * paper: oklch(14% 0.05 290) · accent: oklch(85% 0.14 205) + oklch(65% 0.25 355) · display: Unbounded · body: Figtree
+ * axes: dark / display-heavy wide / cool · studied: no
+ * pre-emit critique: P5 H4 E4 S5 R4 V5
+ */
+@import url("fonts/fonts.css");
+@import url("tokens.css");
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+body {
+  margin: 0; color: var(--color-ink); font: 400 var(--text-base)/1.6 var(--font-body);
+  background: linear-gradient(var(--color-paper), var(--color-paper-2)) fixed var(--color-paper);
 }
-* { box-sizing: border-box; }
-html { color-scheme: dark; }
-body { margin: 0; background: var(--color-paper); color: var(--color-ink);
-       font: 1.0625rem/1.65 var(--font-body); }
-a { color: var(--color-accent); text-underline-offset: 0.15em; overflow-wrap: anywhere; }
-a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 4px; }
-.wrap { max-width: var(--read-max); margin: 0 auto; padding: 0 1rem; }
+a { color: var(--color-cyan); text-underline-offset: 0.18em; }
+a:focus-visible { outline: 3px solid var(--color-cyan); outline-offset: 4px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); font-style: normal; font-weight: 800; line-height: 1.05; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+img { max-width: 100%; height: auto; display: block; }
 
-.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; }
-.top__mark { display: inline-flex; align-items: center; gap: 0.75rem; color: var(--color-ink);
-             font-weight: 700; text-decoration: none; }
-.top__mark img { width: 2.5rem; height: 2.5rem; border-radius: 22%; }
+/* Two layers of stars sliding down, as when the camera climbs in the game. */
+body::before, body::after { content: ""; position: fixed; inset: -23rem 0 0 0; z-index: -1; pointer-events: none; }
+body::before {
+  background-image:
+    radial-gradient(circle at 12% 18%, var(--color-star) 0 1px,   var(--color-clear) 1.6px),
+    radial-gradient(circle at 67% 9%,  var(--color-star) 0 0.8px, var(--color-clear) 1.4px),
+    radial-gradient(circle at 41% 55%, var(--color-star) 0 1.2px, var(--color-clear) 1.8px),
+    radial-gradient(circle at 88% 71%, var(--color-star) 0 0.8px, var(--color-clear) 1.4px),
+    radial-gradient(circle at 23% 86%, var(--color-star) 0 1px,   var(--color-clear) 1.6px),
+    radial-gradient(circle at 55% 33%, var(--color-star) 0 0.7px, var(--color-clear) 1.2px),
+    radial-gradient(circle at 79% 40%, var(--color-star) 0 0.7px, var(--color-clear) 1.2px);
+  background-size: 17rem 17rem; opacity: 0.4;
+  animation: fall-a 80s linear infinite;
+}
+body::after {
+  background-image:
+    radial-gradient(circle at 30% 30%, var(--color-star) 0 1.8px, var(--color-clear) 2.6px),
+    radial-gradient(circle at 78% 62%, var(--color-star) 0 1.4px, var(--color-clear) 2.2px),
+    radial-gradient(circle at 8% 74%,  var(--color-star) 0 1.2px, var(--color-clear) 2px);
+  background-size: 23rem 23rem; background-position: 7rem 3rem; opacity: 0.6;
+  animation: fall-b 46s linear infinite;
+}
 
-.hero { padding-block: 3rem 4rem; text-align: center; }
-.hero img { width: 9rem; height: 9rem; border-radius: 22%; }
-.hero h1 { font-size: clamp(2.25rem, 8vw, 3.5rem); line-height: 1.1; margin: 1.5rem 0 0.75rem; }
-.hero p { color: var(--color-muted); margin: 0 auto 1.5rem; max-width: 30rem; }
+.wrap { width: 100%; max-width: var(--page-max); margin-inline: auto; padding-inline: var(--page-gutter); }
 
-.doc { padding-bottom: 4rem; }
-.doc__part + .doc__part { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-rule); }
-.doc__title { font-size: clamp(1.75rem, 6vw, 2.5rem); line-height: 1.15; margin: 1rem 0 0; }
-.doc__date { color: var(--color-muted); margin: 0.25rem 0 1rem; }
-.doc__langs { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
-.doc h2 { font-size: 1.25rem; margin: 2.25rem 0 0.5rem; }
-.doc p { margin: 0 0 1rem; }
+.top { display: flex; justify-content: space-between; gap: var(--space-md); padding-block: var(--space-md); font-size: var(--text-sm); }
+.top a { color: var(--color-muted); text-decoration: none; white-space: nowrap; }
+.top a:hover { color: var(--color-ink); }
+
+/* ---------- Hero: the game's loop behind the title ---------- */
+
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: var(--space-lg); padding-block: var(--space-md) var(--space-2xl); }
+.scene { width: 100%; max-width: 34rem; max-height: 62svh; margin-inline: auto; overflow: visible; }
+.hero__title { font-size: var(--text-display); text-transform: uppercase; letter-spacing: 0.04em; overflow-wrap: anywhere; min-width: 0; }
+.hero__line { margin-top: var(--space-md); font-size: var(--text-lg); line-height: 1.25; font-weight: 600; max-width: 22ch; }
+.hero__meta { margin-top: var(--space-lg); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm) var(--space-md); color: var(--color-muted); }
+.state { padding: 0.3rem 0.8rem; border: 1px solid var(--color-cyan); border-radius: 999px; color: var(--color-cyan); font-size: var(--text-sm); font-weight: 600; white-space: nowrap; }
+@media (min-width: 56rem) {
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); padding-block: var(--space-xl) var(--space-3xl); }
+  .hero__copy { order: -1; }
+  .hero__title { font-size: clamp(2.5rem, 4.4vw, 3.75rem); }
+  .scene { max-height: 72svh; }
+}
+
+.scene .halo--cyan  { fill: url(#halo-cyan); }
+.scene .halo--pink  { fill: url(#halo-pink); }
+.scene .halo--amber { fill: url(#halo-amber); }
+.scene .ring { fill: none; stroke-width: 2; opacity: 0.55; }
+.scene .ring--cyan  { stroke: var(--color-cyan); }
+.scene .ring--pink  { stroke: var(--color-pink); }
+.scene .ring--amber { stroke: var(--color-amber); opacity: 0.35; }
+.scene .planet--cyan  { fill: var(--color-cyan); }
+.scene .planet--pink  { fill: var(--color-pink); }
+.scene .planet--amber { fill: var(--color-amber); opacity: 0.8; }
+.scene .shine { fill: var(--color-ink); opacity: 0.22; }
+.scene .coin { fill: var(--color-gold); animation: var(--loop) linear infinite; }
+.scene .coin--1 { animation-name: coin-1; }
+.scene .coin--2 { animation-name: coin-2; }
+.scene .coin--3 { animation-name: coin-3; }
+.scene .ball, .scene .tail {
+  fill: var(--color-ink);
+  offset-path: path("M176.5 319.0 A92 92 0 1 0 280.3 427.5 L329.7 172.5 A92 92 0 1 1 433.5 281.0 Z");
+  offset-rotate: 0deg;
+  animation: travel var(--loop) linear infinite;
+  animation-delay: calc(var(--loop) * -1 + var(--lag, 0s));
+}
+.scene .tail { opacity: var(--fade); }
+.stop--cyan  { stop-color: var(--color-cyan); }
+.stop--pink  { stop-color: var(--color-pink); }
+.stop--amber { stop-color: var(--color-amber); }
+
+/* ---------- How it plays ---------- */
+
+.block { padding-block: var(--space-2xl); }
+.block__title { font-size: var(--text-lg); letter-spacing: 0.01em; }
+
+.play { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); align-items: start; }
+.steps { margin: var(--space-lg) 0 0; padding: 0 0 0 1.4em; max-width: var(--read-max); display: grid; gap: var(--space-lg); }
+.steps li::marker { color: var(--color-muted); font-weight: 600; }
+.steps h3 { font-size: var(--text-md); color: var(--color-cyan); }
+.steps p { margin-top: var(--space-xs); color: var(--color-muted); }
+.play__more { margin-top: var(--space-lg); max-width: var(--read-max); }
+.shot { margin: 0; }
+.shot img { border-radius: var(--radius-shot); border: 1px solid var(--color-rule); }
+.shot figcaption { margin-top: var(--space-xs); font-size: var(--text-sm); color: var(--color-muted); }
+.play .shot { max-width: 17rem; }
+@media (min-width: 56rem) {
+  .play { grid-template-columns: minmax(0, 1fr) 17rem; gap: var(--space-2xl); }
+}
+
+/* ---------- Screenshot strip ---------- */
+
+.strip { display: flex; gap: var(--space-md); margin-top: var(--space-lg); padding-bottom: var(--space-md); overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: var(--page-gutter); }
+.strip::before, .strip::after { content: ""; flex: none; width: max(calc(var(--page-gutter) - var(--space-md)), calc((100vw - var(--page-max)) / 2 + var(--page-gutter) - var(--space-md))); }
+.strip .shot { flex: none; width: min(62vw, 14rem); scroll-snap-align: start; }
+
+/* ---------- What's in it ---------- */
+
+.facts { margin: var(--space-lg) 0 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-lg) var(--space-2xl); }
+.facts dt { font-weight: 600; font-size: var(--text-md); line-height: 1.3; }
+.facts dd { margin: var(--space-xs) 0 0; color: var(--color-muted); max-width: 38ch; }
+@media (min-width: 40rem) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ads { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-rule); max-width: var(--read-max); color: var(--color-muted); }
+.ads strong { color: var(--color-ink); font-weight: 600; }
+
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-xs) var(--space-lg); padding-block: var(--space-xl); font-size: var(--text-sm); color: var(--color-muted); border-top: 1px solid var(--color-rule); }
+.foot a { white-space: nowrap; }
+
+/* ---------- Privacy policy ---------- */
+
+.doc { max-width: calc(var(--read-max) + 2 * var(--page-gutter)); padding-bottom: var(--space-2xl); }
+.doc__part + .doc__part { margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-rule); }
+.doc__title { font-size: var(--text-lg); margin-top: var(--space-lg); }
+.doc__date { color: var(--color-muted); margin-top: var(--space-xs); }
+.doc__langs { display: flex; gap: var(--space-md); margin-top: var(--space-md); }
+.doc h2 { font-family: var(--font-body); font-weight: 600; font-size: var(--text-md); line-height: 1.3; margin-top: var(--space-xl); }
+.doc p { margin-top: var(--space-sm); color: var(--color-muted); }
+.doc p strong { color: var(--color-ink); }
+.doc a { overflow-wrap: anywhere; }
+
+/* ---------- Motion ---------- */
+
+@keyframes fall-a { to { transform: translateY(17rem); } }
+@keyframes fall-b { to { transform: translateY(23rem); } }
+@keyframes travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+/* Each coin vanishes as the ball crosses it and returns while the ball is on the far planet. */
+@keyframes coin-1 { 0%, 36% { opacity: 1; } 36.6%, 82% { opacity: 0; } 86%, 100% { opacity: 1; } }
+@keyframes coin-2 { 0%, 40% { opacity: 1; } 40.6%, 82% { opacity: 0; } 86%, 100% { opacity: 1; } }
+@keyframes coin-3 { 0%, 44% { opacity: 1; } 44.6%, 82% { opacity: 0; } 86%, 100% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after, .scene .coin { animation: none; }
+  .scene .ball { animation: none; offset-distance: 12%; }
+  .scene .tail { display: none; }
+}

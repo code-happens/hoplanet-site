@@ -5,19 +5,86 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
 <title>Hoplanet: Orbit Jump</title>
-<meta name="description" content="Hoplanet is a one-tap arcade game for Android: circle a planet, tap to launch, land in the next orbit.">
+<meta name="description" content="Hoplanet is a one-tap arcade game for Android: circle a planet, tap to let go, land in the next orbit.">
 <link rel="canonical" href="https://hoplanet.codehappens.dev/">
 <link rel="icon" href="img/icon-512.png" type="image/png">
+<link rel="preload" href="fonts/Unbounded-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<main class="wrap hero">
-  <img src="img/icon-512.png" alt="" width="512" height="512">
-  <h1>Hoplanet</h1>
-  <p>A one-tap arcade game for Android. Circle a planet, tap to launch, land in the next orbit.</p>
-  <p><a href="privacy-policy.html">Privacy Policy</a> · <a href="mailto:contact@codehappens.dev">contact@codehappens.dev</a></p>
+<header class="wrap top">
+  <a href="https://codehappens.dev/games/">Code Happens</a>
+  <a href="privacy-policy.html">Privacy policy</a>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <svg class="scene" viewBox="0 12 524 500" aria-hidden="true">
+      <defs>
+        <radialGradient id="halo-cyan"><stop class="stop--cyan" offset="40%" stop-opacity="0.34"/><stop class="stop--cyan" offset="100%" stop-opacity="0"/></radialGradient>
+        <radialGradient id="halo-pink"><stop class="stop--pink" offset="40%" stop-opacity="0.34"/><stop class="stop--pink" offset="100%" stop-opacity="0"/></radialGradient>
+        <radialGradient id="halo-amber"><stop class="stop--amber" offset="40%" stop-opacity="0.22"/><stop class="stop--amber" offset="100%" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle class="halo--amber" cx="78" cy="96" r="60"/><circle class="ring ring--amber" cx="78" cy="96" r="70"/>
+      <circle class="planet--amber" cx="78" cy="96" r="30"/><circle class="shine" cx="68" cy="86" r="9"/>
+      <circle class="halo--cyan" cx="190" cy="410" r="84"/><circle class="ring ring--cyan" cx="190" cy="410" r="92"/>
+      <circle class="planet--cyan" cx="190" cy="410" r="46"/><circle class="shine" cx="174" cy="394" r="14"/>
+      <circle class="halo--pink" cx="420" cy="190" r="78"/><circle class="ring ring--pink" cx="420" cy="190" r="92"/>
+      <circle class="planet--pink" cx="420" cy="190" r="40"/><circle class="shine" cx="406" cy="176" r="12"/>
+      <circle class="coin coin--1" cx="295.1" cy="351" r="7"/><circle class="coin coin--2" cx="305" cy="300" r="7"/><circle class="coin coin--3" cx="314.9" cy="249" r="7"/>
+      <circle class="tail" r="2.8" style="--lag:-0.40s;--fade:0.06"/><circle class="tail" r="3.7" style="--lag:-0.35s;--fade:0.11"/><circle class="tail" r="4.6" style="--lag:-0.30s;--fade:0.17"/><circle class="tail" r="5.5" style="--lag:-0.25s;--fade:0.22"/><circle class="tail" r="6.4" style="--lag:-0.20s;--fade:0.28"/><circle class="tail" r="7.3" style="--lag:-0.15s;--fade:0.33"/><circle class="tail" r="8.2" style="--lag:-0.10s;--fade:0.39"/><circle class="tail" r="9.1" style="--lag:-0.05s;--fade:0.45"/>
+      <circle class="ball" r="11"/>
+    </svg>
+    <div class="hero__copy">
+      <h1 class="hero__title">Hoplanet</h1>
+      <p class="hero__line">Circle a planet. Tap to let go. Land in the next orbit.</p>
+      <p class="hero__meta">One-tap arcade for Android <span class="state">Coming to Google Play</span></p>
+    </div>
+  </section>
+
+  <section class="wrap block play">
+    <div>
+      <h2 class="block__title">How it plays</h2>
+      <ol class="steps">
+        <li><h3>Circle</h3><p>Your ball orbits a planet on its own. There is nothing to steer.</p></li>
+        <li><h3>Let go</h3><p>Tap, and it flies off in a straight line, exactly where it was heading.</p></li>
+        <li><h3>Land</h3><p>Reach the next planet’s orbit and it catches you. Miss, and the round is over.</p></li>
+      </ol>
+      <p class="play__more">Hit the sweet spot for a PERFECT and chain them into a combo. Fly past a planet to the one after it and the jump is worth more. The further you go, the smaller the orbits get, and some planets start to move.</p>
+    </div>
+    <figure class="shot"><img src="img/shots/2-gameplay.jpg" alt="The ball in flight between two planets, with coins on the way" width="540" height="960" loading="lazy"><figcaption>In flight</figcaption></figure>
+  </section>
+
+  <section class="block">
+    <div class="wrap"><h2 class="block__title">A look inside</h2></div>
+    <div class="strip" tabindex="0" role="group" aria-label="Screenshots">
+    <figure class="shot"><img src="img/shots/1-menu.jpg" alt="Main menu with Play and Daily Challenge buttons" width="540" height="960" loading="lazy"><figcaption>Menu</figcaption></figure>
+    <figure class="shot"><img src="img/shots/3-game-over.jpg" alt="Game over screen with score and a Continue button" width="540" height="960" loading="lazy"><figcaption>Game over</figcaption></figure>
+    <figure class="shot"><img src="img/shots/4-upgrades.jpg" alt="Upgrade shop listing shield, magnet and other upgrades" width="540" height="960" loading="lazy"><figcaption>Upgrades</figcaption></figure>
+    <figure class="shot"><img src="img/shots/5-shop.jpg" alt="Skin shop with ball and trail styles" width="540" height="960" loading="lazy"><figcaption>Skins</figcaption></figure>
+    <figure class="shot"><img src="img/shots/6-missions.jpg" alt="Three active missions with progress" width="540" height="960" loading="lazy"><figcaption>Missions</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="wrap block">
+    <h2 class="block__title">What’s in it</h2>
+    <dl class="facts">
+      <div><dt>Daily challenge</dt><dd>One level a day, the same for everyone, with a score to beat. Beat it on consecutive days to build a streak.</dd></div>
+      <div><dt>Missions</dt><dd>Three at a time. Finish one and a harder one takes its place.</dd></div>
+      <div><dt>Five upgrades</dt><dd>Shield, coin magnet, stronger gravity, a wider perfect zone and a head start.</dd></div>
+      <div><dt>Nine skins</dt><dd>Looks for your ball and its trail, paid for with the coins you pick up in flight.</dd></div>
+      <div><dt>No connection needed</dt><dd>The game runs offline and has no accounts.</dd></div>
+      <div><dt>Seven languages</dt><dd>English, Polish, German, Spanish, Portuguese, French and Japanese.</dd></div>
+    </dl>
+    <p class="ads"><strong>Free, with ads.</strong> A full-screen ad can appear between rounds, never during one. Other ads play only when you choose to watch one for a reward. A single purchase removes the full-screen ads.</p>
+  </section>
 </main>
+
+<footer class="wrap foot">
+  <p><a href="privacy-policy.html">Privacy policy</a> · <a href="mailto:contact@codehappens.dev">contact@codehappens.dev</a></p>
+  <p>© 2026 <a href="https://codehappens.dev/">Code Happens</a></p>
+</footer>
 
 </body>
 </html>
